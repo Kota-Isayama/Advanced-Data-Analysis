@@ -4,13 +4,14 @@ from scipy import linalg
 matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 
-np.random.seed(10)
+np.random.seed(1)
 
 def data_generation1(n):
     x = np.random.randn(n, 2)
     x[0:n//2, 0] = x[0:n//2, 0] - 4
     x[n//2:, 0] = x[n//2:, 0] + 4
     x = x - np.mean(x, axis=0, keepdims=True)
+    x[:, 1] = 5*x[:, 1]
     y = np.concatenate([np.zeros(n//2), np.ones(n - n//2)])
     return x, y
 
@@ -19,6 +20,7 @@ def data_generation2(n):
     x[0:n//4, 0] = x[0:n//4, 0] - 4
     x[n//4:n//2, 0] = x[n//4:n//2, 0] + 4
     x = x - np.mean(x, axis=0, keepdims=True)
+    x[:, 1] = 5 * x[:, 1]
     y = np.concatenate([np.zeros(n//2), np.ones(n - n//2)])
     return x, y
 
@@ -40,12 +42,12 @@ def fda(x, y,  n_class, n_components=1):
 
 n = 100
 n_components = 1
-x, y = data_generation1(n)
-# x, y = data_generation2(n)
+# x, y = data_generation1(n)
+x, y = data_generation2(n)
 w, v = fda(x, y, 2, n_components=n_components)
 plt.xlim(-6., 6.)
 plt.ylim(-6., 6.)
 plt.plot(x[y==0, 0], x[y==0, 1], 'bo')
 plt.plot(x[y==1, 0], x[y==1, 1], 'rx')
 plt.plot(np.array([-v[0], v[0]]) * 9, np.array([-v[1], v[1]]) * 9)
-plt.show()
+plt.savefig("/Users/kota/Documents/Graduate_School/M2_S/ADA/Advanced-Data-Analysis/12/prob1_3.png")
