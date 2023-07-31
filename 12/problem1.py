@@ -4,7 +4,7 @@ from scipy import linalg
 matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 
-np.random.seed(10)
+np.random.seed(1)
 
 def data_generation1(n):
     x = np.random.randn(n, 2)
