@@ -50,4 +50,8 @@ plt.ylim(-6., 6.)
 plt.plot(x[y==0, 0], x[y==0, 1], 'bo')
 plt.plot(x[y==1, 0], x[y==1, 1], 'rx')
 plt.plot(np.array([-v[0], v[0]]) * 9, np.array([-v[1], v[1]]) * 9)
+<<<<<<< HEAD
 plt.savefig("/Users/kota/Documents/Graduate_School/M2_S/ADA/Advanced-Data-Analysis/12/prob1_3.png")
+=======
+plt.show()
+>>>>>>> origin/main
